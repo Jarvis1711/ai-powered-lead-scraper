@@ -1,24 +1,25 @@
 # Proof of Concept - AI-Powered Lead Scraper
 
-## Idea Reference
-- Number: 4
-- Title: AI-Powered Lead Scraper
-- Description: Scrapes LinkedIn/Web for niche business leads and saves to a CSV.
+## Scope
+- App category: AI & Data
+- Entity model: Ai Powered Insight
+- Deployable stack: Flask + SQLAlchemy + Gunicorn + Docker + CI
 
-## PoC Scope
-- App boots with Flask + SQLite persistence
-- CRUD flow works via web UI (`/`, `/items/new`, `/items/<id>/edit`)
-- API endpoints return valid JSON (`/api/health`, `/api/items`)
-- Deployability assets included (`Dockerfile`, `docker-compose.yml`, `Procfile`)
+## Dynamic Field Configuration
+- Source Input: `source_input` (textarea)
+- Model Output: `model_output` (textarea)
+- Confidence Score: `confidence_score` (number)
 
-## Run Evidence (to capture)
+## Run Evidence Commands
 ```bash
 python app.py
 curl http://localhost:5000/api/health
-curl -X POST http://localhost:5000/api/items -H "Content-Type: application/json" -d '{"title": "Demo item", "details": "Created from PoC command", "status": "active"}'
-curl http://localhost:5000/api/items
+curl http://localhost:5000/api/schema
+curl -X POST http://localhost:5000/api/records   -H "Content-Type: application/json"   -d '{"title":"Demo Record","status":"processing","payload":{"source_input":"Demo value","model_output":12,"confidence_score":"seed note"}}'
+curl http://localhost:5000/api/metrics
 ```
 
 ## Metadata
-- Generated UTC: 2026-03-24T15:35:11.357114+00:00
-- Status: Deployable full-template scaffold complete
+- Idea number: 3
+- Generated UTC: 2026-03-24T15:52:21.736213+00:00
+- Status: Phase-2 complete
